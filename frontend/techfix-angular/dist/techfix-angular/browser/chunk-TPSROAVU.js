@@ -1,0 +1,1 @@
+import{a as r}from"./chunk-3BQLZOI2.js";import"./chunk-EQDQRRRY.js";var o=function(t){return t.Dark="DARK",t.Light="LIGHT",t.Default="DEFAULT",t}(o||{}),e=function(t){return t.None="NONE",t.Slide="SLIDE",t.Fade="FADE",t}(e||{}),a=e,u=o;var p=r("StatusBar");export{e as Animation,p as StatusBar,a as StatusBarAnimation,u as StatusBarStyle,o as Style};

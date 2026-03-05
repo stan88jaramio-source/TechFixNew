@@ -1,0 +1,128 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* ── Base ── */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html, body {
+  height: 100%;
+  background-color: #020617;
+  color: #f8fafc;
+  font-family: 'Inter', system-ui, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar { width: 6px; height: 6px; }
+::-webkit-scrollbar-track { background: #0f172a; }
+::-webkit-scrollbar-thumb { background: #334155; border-radius: 3px; }
+::-webkit-scrollbar-thumb:hover { background: #475569; }
+
+/* ── Glassmorphism ── */
+.glass {
+  background: rgba(15, 23, 42, 0.7);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid rgba(148, 163, 184, 0.1);
+}
+
+/* ── Neon glows ── */
+.neon-cyan {
+  box-shadow: 0 0 15px rgba(34, 211, 238, 0.3), 0 0 30px rgba(34, 211, 238, 0.1);
+}
+.neon-purple {
+  box-shadow: 0 0 15px rgba(168, 85, 247, 0.3), 0 0 30px rgba(168, 85, 247, 0.1);
+}
+
+/* ── Utility ── */
+.font-heading { font-family: 'Orbitron', sans-serif; }
+.font-mono    { font-family: 'JetBrains Mono', monospace; }
+
+/* ── Button transition ── */
+button { transition: all 0.2s ease; }
+
+/* ── Input focus ring ── */
+input:focus, textarea:focus, select:focus {
+  outline: none;
+}
+
+/* ── Animations ── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-in { animation: fadeIn 0.3s ease forwards; }
+
+/* ══════════════════════════════════════════
+   MOBILE / CAPACITOR — Safe Area & Native UX
+   ══════════════════════════════════════════ */
+
+/* Respect device safe areas (notch, home-bar, status bar) */
+:root {
+  --sat: env(safe-area-inset-top,    0px);
+  --sar: env(safe-area-inset-right,  0px);
+  --sab: env(safe-area-inset-bottom, 0px);
+  --sal: env(safe-area-inset-left,   0px);
+}
+
+/* Prevent rubber-band scroll on iOS for the root element */
+html {
+  overscroll-behavior: none;
+  -webkit-overflow-scrolling: touch;
+}
+
+/* Full-screen app shell that handles safe areas */
+app-root {
+  display: flex;
+  flex-direction: column;
+  height: 100dvh;           /* dynamic viewport height — fixes iOS browser bar */
+  padding-top:    var(--sat);
+  padding-right:  var(--sar);
+  padding-bottom: var(--sab);
+  padding-left:   var(--sal);
+  overflow: hidden;
+}
+
+/* Native tap highlight */
+* {
+  -webkit-tap-highlight-color: transparent;
+  touch-action: manipulation;   /* removes 300ms tap delay on mobile */
+}
+
+/* Prevent text-size adjustment on orientation change */
+body {
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+}
+
+/* Bottom navigation safe area helper (for sticky bottom bars) */
+.safe-bottom {
+  padding-bottom: calc(0.75rem + var(--sab));
+}
+
+/* iOS-style momentum scrolling for scroll containers */
+.scroll-container {
+  -webkit-overflow-scrolling: touch;
+  overflow-y: auto;
+}
+
+/* Hide desktop scrollbars on touch devices */
+@media (hover: none) and (pointer: coarse) {
+  ::-webkit-scrollbar { display: none; }
+  * { scrollbar-width: none; }
+}
+
+/* Larger tap targets on mobile */
+@media (max-width: 768px) {
+  button, a, [role="button"] {
+    min-height: 44px;   /* Apple HIG minimum tap target */
+  }
+  input, select, textarea {
+    font-size: 16px; /* prevents iOS auto-zoom on focus */
+  }
+}

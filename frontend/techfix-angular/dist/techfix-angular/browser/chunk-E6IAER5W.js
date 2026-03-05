@@ -1,0 +1,1 @@
+var a=[{value:"recibido",label:"Recibido"},{value:"diagnostico",label:"En Diagn\xF3stico"},{value:"reparando",label:"Reparando"},{value:"listo",label:"Listo"},{value:"entregado",label:"Entregado"}];export{a};

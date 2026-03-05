@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\TechFix.API.props" />
+</Project>

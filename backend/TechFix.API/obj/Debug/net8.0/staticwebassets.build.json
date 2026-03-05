@@ -1,0 +1,11 @@
+{
+  "Version": 1,
+  "Hash": "o6JDjqvmQoRYJDzgCsBYpAQN4xHlh5WkslDgwLsQ5MA=",
+  "Source": "TechFix.API",
+  "BasePath": "_content/TechFix.API",
+  "Mode": "Default",
+  "ManifestType": "Build",
+  "ReferencedProjectsConfiguration": [],
+  "DiscoveryPatterns": [],
+  "Assets": []
+}
